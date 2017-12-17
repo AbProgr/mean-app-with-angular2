@@ -12,6 +12,7 @@ const authentication = require('./routes/authentication')(router)
 
 const bodyParser = require('body-parser')
 const morgan = require('morgan')
+const cors = require('cors')
 
 mongoose.Promise = global.Promise
 
@@ -26,6 +27,10 @@ mongoose.connect(config.uri, {
 })
 
 app.use(morgan('dev'))
+
+app.use(cors({
+    origin: 'http://localhost:4200'
+}))
 
 app.use(bodyParser.urlencoded({
     extended: true
