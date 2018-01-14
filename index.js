@@ -42,7 +42,7 @@ app.use(express.static(__dirname + '/client/dist/'))
 app.use('/authentication', authentication)
 
 app.get('*', (req, res) => {
-    res.render('index.html')
+    res.sendFile(path.join(__dirname + '/client/dist/index.html'));
 })
 
 app.listen(8080, () => {
